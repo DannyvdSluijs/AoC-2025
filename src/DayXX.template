@@ -13,14 +13,16 @@ class DayXX
     public function partOne(): string
     {
         $content = $this->readInput();
+        $answer = 0;
 
-        return '';
+        return (string) $answer;
     }
 
     public function partTwo(): string
     {
         $content = $this->readInput();
+        $answer = 0;
 
-        return '';
+        return (string) $answer;
     }
 }

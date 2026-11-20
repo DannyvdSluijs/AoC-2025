@@ -66,10 +66,14 @@ trait ContentReader
     }
 
     /** @return list<list<int>> */
-    public function readInputAsGridOfNumbers(): array
+    public function readInputAsGridOfNumbers(string $separator = ' '): array
     {
         $lines = $this->readInputAsLines();
-        return array_map(static fn($line) => array_map(intval(...), array_values(array_filter(explode(' ', $line)))), $lines);
+        if ($separator === '') {
+            return array_map(static fn($line) => array_map(intval(...), array_values(array_filter(str_split($line)))), $lines);
+        }
+
+        return array_map(static fn($line) => array_map(intval(...), array_values(array_filter(explode($separator, $line)))), $lines);
     }
 
     /** @return list<list<int>> */
