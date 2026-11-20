@@ -22,10 +22,14 @@ class Day04
 
         foreach ($this->grid as $x => $line) {
             foreach ($line as $y => $cell) {
+                if ($this->grid[$x][$y] !== '@') {
+                    continue;
+                }
+
                 $neighbours = $this->getNeighbours($x, $y);
                 $rolls = array_filter($neighbours, static fn ($neighbour) => $neighbour === '@');
 
-                if ($this->grid[$x][$y] === '@' && count($rolls) < 4) {
+                if (count($rolls) < 4) {
                     $answer++;
                 }
             }
@@ -43,10 +47,14 @@ class Day04
         while (true) {
             foreach ($this->grid as $x => $line) {
                 foreach ($line as $y => $cell) {
+                    if ($this->grid[$x][$y] !== '@') {
+                        continue;
+                    }
+
                     $neighbours = $this->getNeighbours($x, $y);
                     $rolls = array_filter($neighbours, static fn($neighbour) => $neighbour === '@');
 
-                    if ($this->grid[$x][$y] === '@' && count($rolls) < 4) {
+                    if (count($rolls) < 4) {
                         $answer++;
                         $removed[] = [$x, $y];
                     }
